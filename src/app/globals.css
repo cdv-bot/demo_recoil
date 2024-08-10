@@ -1,0 +1,28 @@
+.grid-item {
+  background: #ccc;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 10px;
+  text-align: center;
+  /* position: absolute; */
+}
+
+.no-drag {
+}
+
+.grid-item {
+  /* position: relative; */
+  transition: all 0.3s ease;
+  z-index: 10;
+  box-sizing: border-box;
+  border: 1px solid #000;
+  border: 1px solid #000; /* Border cho các cột */
+  background-color: #f0f0f0; /* Màu nền cho dễ phân biệt */
+  padding: 10px; /* Khoảng cách nội dung */
+  box-sizing: border-box;
+}
+
+.layout {
+  position: relative;
+  display: flex;
+}

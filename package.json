@@ -9,11 +9,21 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@antv/x6": "^2.18.1",
+    "@antv/xflow": "^2.1.13",
+    "@antv/xflow-core": "^1.0.55",
+    "@antv/xflow-hook": "^1.0.55",
+    "@xyflow/react": "^12.2.1",
+    "antd": "^5.22.3",
+    "entitree-flex": "^0.4.1",
+    "lodash": "^4.17.21",
     "next": "14.2.5",
     "react": "^18",
     "react-dom": "^18",
     "react-grid-layout": "^1.4.4",
-    "react-sizeme": "^3.0.2"
+    "react-sizeme": "^3.0.2",
+    "react-webcam": "^7.2.0",
+    "recoil": "^0.7.7"
   },
   "devDependencies": {
     "eslint": "^8",

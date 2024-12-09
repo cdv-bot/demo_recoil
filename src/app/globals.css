@@ -26,3 +26,30 @@
   position: relative;
   display: flex;
 }
+
+.flow-container {
+  width: 100%;
+  height: 500px;
+  min-width: 400px; /* Kích thước tối thiểu cho chiều rộng */
+  min-height: 300px; /* Kích thước tối thiểu cho chiều cao */
+  border: 1px solid #ddd; /* Để dễ thấy vùng chứa */
+}
+.react-flow__edge-path {
+  stroke: #333;
+  stroke-width: 2;
+}
+
+.temp .react-flow__edge-path {
+  stroke: #bbb;
+  stroke-dasharray: 5 5;
+}
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}

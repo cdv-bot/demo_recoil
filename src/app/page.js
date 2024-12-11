@@ -7,6 +7,7 @@ import PropsRecoil from './PropsRecoil';
 import AtomFamily from './AtomFamily';
 import EffectAtom from './EffectAtom';
 import Selector from './Selector';
+import SelectorFamily from './SelectorFamily';
 
 const Page = () => {
     const items = [
@@ -39,6 +40,11 @@ const Page = () => {
             key: '6',
             label: 'Recoil selector',
             children: <Selector />,
+        },
+        {
+            key: '7',
+            label: 'Recoil selector family',
+            children: <SelectorFamily />,
         },
     ];
     return (

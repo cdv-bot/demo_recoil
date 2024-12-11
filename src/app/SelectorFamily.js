@@ -1,79 +1,47 @@
-import { Button } from 'antd';
 import React from 'react';
-import { atom, selector, useRecoilValue, useRecoilValueLoadable, useSetRecoilState } from 'recoil';
+import { atomFamily, selectorFamily, useRecoilValue, useRecoilState } from 'recoil';
 
-const userIdAtom = atom({
-    key: 'userIdAtom',
-    default: 1,
+// Tạo một atomFamily
+const itemState = atomFamily({
+    key: 'itemState',
+    default: (id) => `Default value for item ${id}`,
 });
 
-const fetchTodoSelector = selector({
-    key: 'fetchTodoSelector',
-    get: async ({ get }) => {
-        const id = get(userIdAtom);
-        const response = await fetch(`https://jsonplaceholder.typicode.com/todos/${id}`);
-        if (!response.ok) {
-            throw new Error('Failed to fetch user data');
-        }
-        const data = await response.json();
-        return data;
+// Tạo một selectorFamily
+const itemSelector = selectorFamily({
+    key: 'itemSelector',
+    get: (id) => ({ get }) => {
+        const item = get(itemState(id));
+        return `Giá trị selector ${item.toUpperCase()}`;
     },
 });
 
-const ComponentCallAPI = () => {
-    const setUserId = useSetRecoilState(userIdAtom)
-    const data = useRecoilValueLoadable(fetchTodoSelector);
+function Item({ id }) {
+    const [value, setValue] = useRecoilState(itemState(id));
+    const processedValue = useRecoilValue(itemSelector(id));
 
-    if (data.state === 'loading') return <p>Loading...</p>;
-    if (data.state === 'hasError') return <p>Error</p>;
     return (
         <div>
-            <Button onClick={() => setUserId(prev => prev + 1)}>Click</Button>
-            <div>
-                {JSON.stringify(data)}
-            </div>
+            <input
+                type="text"
+                value={value}
+                onChange={(e) => setValue(e.target.value)}
+            />
+            <p>Original: {value}</p>
+            <p>{processedValue}</p>
         </div>
     );
 }
 
-
-const countAtom = atom({
-    key: 'countAtom',
-    default: 0,
-});
-
-const doubledCountSelector = selector({
-    key: 'doubledCountSelector',
-    get: ({ get }) => {
-        const count = get(countAtom);
-        return count * 2;
-    },
-    set: ({ set, get }, newValue) => {
-        const currentCount = get(countAtom);
-        const newCount = Math.floor(Number(newValue + currentCount) / 2);
-        if (!isNaN(newCount)) {
-            set(countAtom, newCount);
-        }
-    },
-});
-
-const ComponentLogic = () => {
-    const doubledCount = useRecoilValue(doubledCountSelector);
-    const setDoubledCount = useSetRecoilState(doubledCountSelector);
-
-    const increment = () => setDoubledCount((prev) => prev + 2);
-    return <>
-        <button onClick={increment}>Increment</button>
-        <p>{doubledCount}</p>
-    </>
+function SelectorFamily() {
+    return (
+        <div>
+            <Item id={1} />
+            <Item id={2} />
+        </div>
+    );
 }
 
+export default SelectorFamily;
 
-const Selector = () => {
-    return <>
-        {/* <ComponentCallAPI /> */}
-        <ComponentLogic />
-    </>
-}
 
-export default Selector;

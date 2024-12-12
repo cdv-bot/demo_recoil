@@ -1,13 +1,15 @@
 "use client"
-import React from 'react';
-import PropsDrilling from './PropsDrilling';
 import { Tabs } from 'antd';
-import PropsContext from './PropsContext';
-import PropsRecoil from './PropsRecoil';
 import AtomFamily from './AtomFamily';
 import EffectAtom from './EffectAtom';
+import PropsContext from './PropsContext';
+import PropsDrilling from './PropsDrilling';
+import PropsRecoil from './PropsRecoil';
+import RecoilCallback from './RecoilCallback';
 import Selector from './Selector';
 import SelectorFamily from './SelectorFamily';
+import SelectorFamilyApi from './SelectorFamilyApi';
+import SelectorSet from './SelectorSet';
 
 const Page = () => {
     const items = [
@@ -45,6 +47,21 @@ const Page = () => {
             key: '7',
             label: 'Recoil selector family',
             children: <SelectorFamily />,
+        },
+        {
+            key: '8',
+            label: 'Recoil selector family call api',
+            children: <SelectorFamilyApi />,
+        },
+        {
+            key: '9',
+            label: 'Recoil selector family set',
+            children: <SelectorSet />,
+        },
+        {
+            key: '10',
+            label: 'Recoil callback',
+            children: <RecoilCallback />,
         },
     ];
     return (

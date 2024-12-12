@@ -1,13 +1,12 @@
-import React from 'react';
-import { atomFamily, selectorFamily, useRecoilValue, useRecoilState } from 'recoil';
+import { atomFamily, selectorFamily, useRecoilState, useRecoilValue } from 'recoil';
 
-// Tạo một atomFamily
+
 const itemState = atomFamily({
     key: 'itemState',
     default: (id) => `Default value for item ${id}`,
 });
 
-// Tạo một selectorFamily
+
 const itemSelector = selectorFamily({
     key: 'itemSelector',
     get: (id) => ({ get }) => {
@@ -37,6 +36,7 @@ function SelectorFamily() {
     return (
         <div>
             <Item id={1} />
+            <>-----------------</>
             <Item id={2} />
         </div>
     );

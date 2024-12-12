@@ -6,6 +6,8 @@ export const refreshUserDataAtom = atom({
     default: 0,
 });
 
+console.log(refreshUserDataAtom);
+console.log(refreshUserDataAtom);
 export const refreshUserDataAtom2 = atomFamily({
     key: 'refreshUserDataAtom2',
     default: 0,
@@ -22,3 +24,4 @@ export const userDataQuery = selector({
         set(refreshUserDataAtom, 4 * newValue);
     },
 });
+console.log("run");
